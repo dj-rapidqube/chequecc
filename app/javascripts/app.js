@@ -46,8 +46,7 @@ window.App = {
 
 
             self.refreshBalance();
-            self.refreshShares();
-            self.refreshLeaves();
+           
         
             // self.accountStatus();
         });
@@ -99,16 +98,19 @@ window.App = {
 
     SendCoins: function() {
         var self = this;
-
-        var amount = parseInt(document.getElementById("CoinAmount").value);
         var receiver = document.getElementById("sendCoinReceiver").value;
+        var bank_name=(document.getElementById("bank_name").value);
+        var amount = parseInt(document.getElementById("CoinAmount").value);
+        console.log("lol----",bank_name)
+        var date=(document.getElementById("issueddate").value);
+        console.log("lolol------>",date);
         console.log("Coinreciever:" + receiver);
         this.setStatus("Initiating transaction... (please wait)");
 
         var rapid;
         SmartCurrency.deployed().then(function(instance) {
             rapid = instance;
-            return rapid.SendCoins(receiver, amount, {
+            return rapid.SendCoins(receiver, bank_name, amount, date,{
                 from: account
             });
         }).then(function(value) {
@@ -118,7 +120,7 @@ window.App = {
 
         }).catch(function(e) {
             console.log(e);
-            self.setStatus("Error sending coin; see log.");
+            self.setStatus("Error Approving transaction due to insufficient Balance");
         });
     },
 
@@ -142,6 +144,25 @@ window.App = {
         });
     },
     
+    getBankname: function(){
+        var self = this;
+        var rapid;
+        SmartCurrency.deployed().then(function(instance){
+            rapid = instance;
+            var coinAddress = document.getElementById("coinReceiver").value;
+
+            return rapid.getBank.call(coinAddress,{
+                from:account
+            });
+        }).then(function(value) {
+            var balance_element = document.getElementById("checkBalance");
+            balance_element.innerHTML = value.valueOf();
+        }).catch(function(e) {
+            console.log(e);
+            self.setStatus("Error getting balance; see log.");
+        });
+
+    },
 };
 
 window.addEventListener('load', function() {
