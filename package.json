@@ -33,9 +33,13 @@
     "web3": "^0.18.2",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.5.0",
-    "nodemailer":"^0.7.1"
+    "nodemailer": "^0.7.1"
   },
   "dependencies": {
-    "mysql": "^2.13.0"
+    "bip39": "^2.4.0",
+    "ethereumjs-wallet": "^0.6.0",
+    "mysql": "^2.13.0",
+    "web3": "^0.18.4",
+    "web3-provider-engine": "^13.3.3"
   }
 }

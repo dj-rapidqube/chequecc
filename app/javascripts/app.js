@@ -104,7 +104,7 @@ window.App = {
         console.log("lol----",bank_name)
         var date=(document.getElementById("issueddate").value);
         console.log("lolol------>",date);
-        console.log("Coinreciever:" + receiver);
+        console.log("Coinreciever:------>" + receiver);
         this.setStatus("Initiating transaction... (please wait)");
 
         var rapid;
@@ -144,18 +144,47 @@ window.App = {
         });
     },
     
-    getBankname: function(){
+addDetails:function(){
+    var self = this;
+    var receiver = document.getElementById("sendCoinReceiver").value;
+    var bank_name=(document.getElementById("bank_name").value);
+    var amount = (document.getElementById("CoinAmount").value);
+    console.log("lol----",bank_name)
+    var date=(document.getElementById("issueddate").value);
+    console.log("lolol------>",date);
+    console.log("Coinreciever:------>" + receiver);
+    this.setStatus("Initiating transaction... (please wait)");
+    var updateString=[receiver,bank_name,amount,date]
+    // updateString.toString();
+    console.log("lol-------->",updateString);
+    var rapid;
+    SmartCurrency.deployed().then(function(instance) {
+        rapid = instance;
+        return rapid.updateStatus(updateString.toString(),{
+            from: account
+        });
+    }).then(function(value) {
+
+        self.setStatus("Transaction complete!");
+
+    }).catch(function(e) {
+        console.log(e);
+        self.setStatus("Error Approving transaction due to insufficient Balance");
+    });
+},
+
+    getStatus: function(){
         var self = this;
         var rapid;
         SmartCurrency.deployed().then(function(instance){
             rapid = instance;
-            var coinAddress = document.getElementById("coinReceiver").value;
+            var index = parseInt(document.getElementById("get").value);
 
-            return rapid.getBank.call(coinAddress,{
+            return rapid.getStatus.call(index,{
                 from:account
             });
         }).then(function(value) {
-            var balance_element = document.getElementById("checkBalance");
+            var balance_element = document.getElementById("getStatus");
             balance_element.innerHTML = value.valueOf();
         }).catch(function(e) {
             console.log(e);

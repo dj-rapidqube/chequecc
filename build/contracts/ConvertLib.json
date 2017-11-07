@@ -26,6 +26,12 @@
   ],
   "unlinked_binary": "0x60606040523415600e57600080fd5b5b60778061001d6000396000f300606060405263ffffffff60e060020a60003504166396e4ee3d81146023575b600080fd5b602f6004356024356041565b60405190815260200160405180910390f35b8181025b929150505600a165627a7a72305820e5f2c1f8027f6bd710aee2bbf6ba51c5755ba9e0b4885052b5345a478e497b1b0029",
   "networks": {
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "0x150454aa46ffc62685d5e06312232fcc19b3cd58",
+      "updated_at": 1509794545763
+    },
     "1509616299995": {
       "events": {},
       "links": {},
@@ -85,8 +91,26 @@
       "links": {},
       "address": "0xc4e8f39889854629e4364a9871d0fef5bc94081a",
       "updated_at": 1509768734155
+    },
+    "1509792193091": {
+      "events": {},
+      "links": {},
+      "address": "0xd14d7b7f06f2d395ecf4f149407db95afe4f9747",
+      "updated_at": 1509792342054
+    },
+    "1509962927600": {
+      "events": {},
+      "links": {},
+      "address": "0xe710471879ac45de4e4d75b3cfe07235788d6a6e",
+      "updated_at": 1509962981538
+    },
+    "1510050088711": {
+      "events": {},
+      "links": {},
+      "address": "0xc528e101ea8b40791cd26eee3b7e81f981aa9ffb",
+      "updated_at": 1510050120552
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1509768734155
+  "updated_at": 1510050120552
 }

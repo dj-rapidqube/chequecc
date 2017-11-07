@@ -7,7 +7,9 @@ pragma solidity ^0.4.4;
    
     //users will be stored in address array.
    struct Usr {
+    
     string [] details;
+    
     }
 
    event Transfer(address indexed _from, address indexed _to, uint256 _value , string _bank_name, string _date); //transfer amount from to receiver
@@ -17,9 +19,7 @@ pragma solidity ^0.4.4;
       
    }
 
-  
-
-    function SendCoins(address receiver,string bank_name, uint amount, string date)returns(bool sufficient) {
+   function SendCoins(address receiver,string bank_name, uint amount, string date)returns(bool sufficient) {
         if (balances[msg.sender] < amount) return false; // checks balance is not 0.
         balances[msg.sender] -= amount; // deducts  balance from Sender.
         balances[receiver] += amount; // increments  balance of  receiver.
