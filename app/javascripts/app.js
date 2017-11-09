@@ -98,7 +98,8 @@ window.App = {
 
     SendCoins: function() {
         var self = this;
-        var receiver = document.getElementById("sendCoinReceiver").value;
+        var receiver = (document.getElementById("sendCoinReceiver").value);
+        //var accname=(document.getElementById("accountname").value);
         var bank_name=(document.getElementById("bank_name").value);
         var amount = parseInt(document.getElementById("CoinAmount").value);
         console.log("lol----",bank_name)
@@ -147,6 +148,7 @@ window.App = {
 addDetails:function(){
     var self = this;
     var receiver = document.getElementById("sendCoinReceiver").value;
+     var accname=(document.getElementById("accountname").value);
     var bank_name=(document.getElementById("bank_name").value);
     var amount = (document.getElementById("CoinAmount").value);
     console.log("lol----",bank_name)
@@ -154,7 +156,7 @@ addDetails:function(){
     console.log("lolol------>",date);
     console.log("Coinreciever:------>" + receiver);
     this.setStatus("Initiating transaction... (please wait)");
-    var updateString=[receiver,bank_name,amount,date]
+    var updateString=[receiver,accname,bank_name,amount,date]
     // updateString.toString();
     console.log("lol-------->",updateString);
     var rapid;
@@ -173,26 +175,26 @@ addDetails:function(){
     });
 },
 
-    getStatus: function(){
-        var self = this;
-        var rapid;
-        SmartCurrency.deployed().then(function(instance){
-            rapid = instance;
-            var index = parseInt(document.getElementById("get").value);
+getStatus: function(){
+    var self = this;
+    var rapid;
+    SmartCurrency.deployed().then(function(instance){
+        rapid = instance;
+        var dataofarray = parseInt(document.getElementById("get").value);
 
-            return rapid.getStatus.call(index,{
-                from:account
-            });
-        }).then(function(value) {
-            var balance_element = document.getElementById("getStatus");
-            balance_element.innerHTML = value.valueOf();
-        }).catch(function(e) {
-            console.log(e);
-            self.setStatus("Error getting balance; see log.");
+       return rapid.getStatus.call(dataofarray,{
+            from:account
         });
+    }).then(function(value) {
+        var balance_element = document.getElementById("getStatus");
+        balance_element.innerHTML = value.valueOf();
+    }).catch(function(e) {
+        console.log(e);
+        self.setStatus("Error getting balance; see log.");
+    });
 
-    },
-};
+},
+}
 
 window.addEventListener('load', function() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)

@@ -92,8 +92,8 @@
                             <h2></h2>
 
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#Coins">Send Cheque Details</a></li>
-                                <li><a data-toggle="tab" href="#Shares">Recieve Cheque Details</a></li>
+                                <li class="active"><a data-toggle="tab" href="#Coins">ABC Bank</a></li>
+                                <li><a data-toggle="tab" href="#Shares">XYZ Bank</a></li>
                                 <li><a data-toggle="tab" href="#Leaves">Status</a></li>
 
                                 <!--<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>-->
@@ -101,16 +101,14 @@
 
                             <div class="tab-content">
                                 <div id="Coins" class="tab-pane fade in active">
-                                    <h3>You have <span class="black"><span id="balance"></span>Amount</span>
-                                    </h3>
-                                    <br>
-                                    <button class="btn btn-primary pull-centre" id="send" onclick="App.ResetCoins()">Check Balance</button>
-                                    <br>
-                                    <p>
+                                    
                                         <h1>Cheque Details</h1>
                                         <br>
                                         <label for="receiver">AccountNumber:</label>
                                         <input class="form-control" type="text" id="sendCoinReceiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+                                        <br>
+                                        <label for="receiver">AccountHolderName:</label>
+                                        <input class="form-control" type="text" id="accountname" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
                                         <br>
                                         <label for="bank_name">Bank name:</label>
                                         <input class="form-control" type="text" id="bank_name" placeholder="e.g., name"></input>
@@ -133,6 +131,83 @@
                                     </p>
 
                             </div>
+                            <div id="Shares" class="tab-pane fade">
+                                <h3>You have <span class="black"><span id="balance"></span>Amount</span>
+                                </h3>
+                                <br>
+                                <button class="btn btn-primary pull-centre" id="send" onclick="App.ResetCoins()">Check Balance</button>
+                                <br>
+                                <p>
+                    
+                        <h3> <span class="black"><span id="getStatus">Verify Cheque Details</span> </span>
+                        </h3>
+                        <label>Text box</label>
+                        <input class="form-control "type = "text" id = "get" placeholder = "eg.0"></input>
+                       <br>
+                       <br>
+                       <button class="btn btn-primary" id="send" onclick="App.getStatus()">Submit</button>
+                       <br>
+                       <br>
+                       <br>
+                       <button class="btn btn-primary pull-left" id="send" onclick="App.SendCoins()">Approve</button>
+                       <button class="btn btn-primary pull-left" id="send" onclick="App.SendShares()">Reject</button> 
+                       <br>
+                      
+                    
+                            <br>
+                    
+                                <span id="SendShares"></span>
+                                <br>
+
+                                <br>
+                              
+                         
+                        </div>
+                        <div id="Leaves" class="tab-pane fade">
+                                <h3><span class="black"><span id="leaves"></span>Check the status of payment transaction</span>
+                                </h3>
+
+                                <br>
+                               
+                                <p>
+                                   
+                                   <table style="width:100%">
+                                <caption>Transaction History</caption>
+                                <tr>
+                                    <th>Transaction No</th>
+                                    <th>Bank Name</th>
+                                    <th>Account No</th>
+                                    <th>Cheque Issued Date</th>
+                                    <th>Transaction status</th>
+                                    <th>Reason</th>
+
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>ICICI</td>
+                                    <td>2314251414</td>
+                                    <td>03/10/2017</td>
+                                    <td>Transfered</td>
+                                    <td>Sufficient Balance</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>HDFC</td>
+                                    <td>4214655665</td>
+                                    <td>03/10/2017</td>
+                                    <td>Not Transfered</td>
+                                    <td>Insufficient Balance</td>
+                                </tr>
+                               
+                                
+                                </table>
+
+                                </table>
+                                       
+                            </p>
+                            </div>
+
+                        </div>
 
                             <span id="status"></span>
                             <br>
